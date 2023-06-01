@@ -1,0 +1,16 @@
+1. 우선 댓글 DB(힌트: Model을 만들어주세요) - Foregin Key를 설정해줘야함.
+
+class Comment(models.Model):
+    post = models.ForeginKey(Post, on_delete = models.CASCADE)
+    content = models.TextField()
+
+
+2. 
+-context에 댓글 담고
+-form 태그 html에 추가하기
+
+3.
+-Comments.objects.filter(post=post)을 context에 담기.
+
+4.
+- if request.method == "POST" / 정

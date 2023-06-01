@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Modify Post </h1>
+    
+    <form action = "{% url 'modify_post' post.id%}" method = "POST">
+        <!-- 다양한 사용자에게 배포해야하는 프로그램은 패킹의 위험이있다. 사용자에게 제공되는 serf토큰이란게 있다. 아이디 비밀번호
+        는 아니지만 cross origin을 막는다. 다른 사이트에서 이 사이트에 접속하는걸 막겠다. POST를 보낼때는 csrf_token을
+        붙여야 오류가 안난다.-->
+        {% csrf_token %}
+        <label for = "title"> Title </label>
+        <textarea name = "title" id = "title" value="{{post.title}}"> </textarea>
+
+        <label for = "content"> Content </label>
+        <textarea name = "content" id = "content" value="{{post.content}}"> </textarea>
+
+        <input type = "submit" value = "Create">
+    </form>
+</body>
+</html>

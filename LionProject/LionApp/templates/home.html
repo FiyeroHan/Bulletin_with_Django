@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LionApp Home</title>
+</head>
+<body>
+    <h1>LionApp Home</h1>
+    {% for post in posts %}
+    <a>제목: </a> 
+    <a href="{% url 'detail' post.id %}">{{post.title}}</a>
+    <br>
+    <a>내용: </a>
+    <a href="{% url 'detail' post.id %}">{{post.content}}</a>
+    <br>
+    <br>
+    {% endfor %}
+
+    <br>
+    <br>
+    <a href="create_post/"><button class="AddPost"> 
+    새로운 글 작성하기</button></a>
+
+
+</body>
+</html>

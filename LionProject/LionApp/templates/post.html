@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LionApp Post</title>
+</head>
+<body>
+    <h1>LionApp Post</h1>
+    <a href="{% url 'home' %}"><button> 돌아가기 </button> </a>
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+
+    <br>
+    <br>
+    <a href="{% url 'modify_post' post.id %}"><button> 수정하기 </button> </a>
+    <form action = "{% url 'delete_post' post.id %}"> <button> 삭제하기 </button>
+    </form>
+    
+
+
+    <!-- 댓글 -->
+    <br>
+    <br>
+    <label for = "reple"> Reple </label>
+
+    <form action = "{% url 'detail' post.id %}" method = "POST">
+        {% csrf_token %}
+        <textarea name="reple" id="reple"></textarea>
+        <br>
+        <input type = "submit" value = "Create">
+    </form>
+    {% for reple in reples %}
+    <p>{{reple.content}}</p>
+    <form action = "{% url 'delete_reple' reple.id post.id%}"> <button> 삭제하기 </button>
+    </form>
+    {% endfor %}
+</body>
+</html>
